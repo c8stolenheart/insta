@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-fvala^m+8@qo*99f-865mkj%@^i2e*e_@87^&e8579sx6*e@o$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['insta-i8f2.onrender.com']
 
 
 # Application definition
