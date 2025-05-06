@@ -22,7 +22,7 @@
     <header>
       <div class="header-content">
         <img
-          src="https://cdn-icons-png.flaticon.com/512/717/717392.png"
+          src="{% static 'downloader/717392.png' %}"
           class="logo"
         />
         <span>InstaLoaderWeb</span>
@@ -48,9 +48,9 @@
       <div class="media-cards">
         {% for image in images %}
         <div class="card">
-          <img src="{{ MEDIA_URL }}temp/{{ image }}" alt="{{ image }}" />
+          <img src="{% static 'downloader/{{ image }}' %}" alt="{{ image }}" />
           <div class="card-actions">
-            <a href="{{ MEDIA_URL }}temp/{{ image }}" download="{{ image }}"
+            <a href="{% static 'downloader/{{ image }}' %}" download="{{ image }}"
               >Download</a
             >
           </div>
