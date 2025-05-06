@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: insta-loader-web
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn InstaLoaderWeb.wsgi:application
+    plan: free
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: InstaLoaderWeb.settings
+      - key: SECRET_KEY
+        generateValue: true
