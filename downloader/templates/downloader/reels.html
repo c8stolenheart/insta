@@ -11,7 +11,6 @@
       href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{% static 'downloader/styles.css' %}" />
     <link
       rel="icon"
       type="image/x-icon"
@@ -22,7 +21,7 @@
     <header>
       <div class="header-content">
         <img
-          src="{% static 'downloader/717392.png' %}"
+          src="https://cdn-icons-png.flaticon.com/512/717/717392.png"
           class="logo"
         />
         <span>InstaLoaderWeb</span>
@@ -48,9 +47,9 @@
       <div class="media-cards">
         {% for image in images %}
         <div class="card">
-          <img src="{% static 'downloader/{{ image }}' %}" alt="{{ image }}" />
+          <img src="{{ MEDIA_URL }}temp/{{ image }}" alt="{{ image }}" />
           <div class="card-actions">
-            <a href="{% static 'downloader/{{ image }}' %}" download="{{ image }}"
+            <a href="{{ MEDIA_URL }}temp/{{ image }}" download="{{ image }}"
               >Download</a
             >
           </div>
