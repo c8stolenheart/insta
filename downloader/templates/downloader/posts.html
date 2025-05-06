@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InstaLoaderWeb</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'downloader/styles.css' %}" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://cdn-icons-png.flaticon.com/512/4208/4208397.png"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/717/717392.png"
+          class="logo"
+        />
+        <span>InstaLoaderWeb</span>
+      </div>
+    </header>
+    <section class="user-input">
+      <form action="{% url 'posts' %}" method="POST">
+        {% csrf_token %}
+        <label for="postURL">Enter Instagram Post URL</label>
+        <input
+          type="text"
+          name="postURL"
+          id="postURL"
+          placeholder="https://www.instagram.com/"
+        />
+        <button type="submit" id="download">Download</button>
+        <span class="loader" style="display: none"></span>
+        <h3>{{error}}</h3>
+      </form>
+    </section>
+    {% if data %}
+    <div class="container">
+      <div class="media-cards">
+        {% for image in images %}
+        <div class="card">
+          <img src="{{ MEDIA_URL }}temp/{{ image }}" alt="{{ image }}" />
+          <div class="card-actions">
+            <a href="{{ MEDIA_URL }}temp/{{ image }}" download="{{ image }}"
+              >Download</a
+            >
+          </div>
+        </div>
+        {% endfor %} {% for video in videos %}
+        <div class="card">
+          <video controls>
+            <source src="{{ MEDIA_URL }}temp/{{ video }}" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="card-actions">
+            <a href="{{ MEDIA_URL }}temp/{{ video }}" download="{{ video }}"
+              >Download</a
+            >
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    <footer>
+      Made with &#10084;&#65039; in &#127470;&#127475; • InstaLoaderWeb &copy;
+      <span><a href="https://github.com/AzeemIdrisi">AzeemIdrisi</a></span>
+      {{ year }}
+    </footer>
+    <script>
+      document
+        .getElementById("download")
+        .addEventListener("click", function () {
+          document.querySelector(".loader").style.display = "block";
+        });
+    </script>
+  </body>
+</html>
